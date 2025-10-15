@@ -24,6 +24,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->release   = 'v1.8.0';
-$plugin->version   = 2024040400;
+$plugin->version   = 2025061001;
 $plugin->requires  = 2017051500;
 $plugin->component = 'local_panorama';
