@@ -26,73 +26,57 @@ defined('MOODLE_INTERNAL') || die();
 global $PAGE;
 
 if ($hassiteconfig) {
-    $ADMIN->add('modules', new admin_category('panorama', new lang_string('panorama', 'local_panorama')));
+	$ADMIN->add('modules', new admin_category('panorama', new lang_string('panorama', 'local_panorama')));
 
-    require_once('classes/panorama_admin_page.php');
-    $settings = new \local_panorama\panorama_admin_page('panoramasettings', new lang_string('settings', 'local_panorama'));
+	require_once('classes/panorama_admin_page.php');
+	$settings = new \local_panorama\panorama_admin_page('panoramasettings', new lang_string('settings', 'local_panorama'));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/key1',
-    new lang_string('key1', 'local_panorama'),
-    new lang_string('key1desc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/key1',
+		new lang_string('key1', 'local_panorama'),
+		new lang_string('key1desc', 'local_panorama'),
+		'',
+		PARAM_TEXT
+	));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/key2',
-    new lang_string('key2', 'local_panorama'),
-    new lang_string('key2desc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/key2',
+		new lang_string('key2', 'local_panorama'),
+		new lang_string('key2desc', 'local_panorama'),
+		'',
+		PARAM_TEXT
+	));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/consumerkey',
-    new lang_string('consumerkey', 'local_panorama'),
-    new lang_string('consumerkeydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/consumerkey',
+		new lang_string('consumerkey', 'local_panorama'),
+		new lang_string('consumerkeydesc', 'local_panorama'),
+		'',
+		PARAM_TEXT
+	));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/ltikey',
-    new lang_string('ltikey', 'local_panorama'),
-    new lang_string('ltikeydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
+	$settings->add(new admin_setting_configpasswordunmask(
+		'panorama/ltikey',
+		new lang_string('ltikey', 'local_panorama'),
+		new lang_string('ltikeydesc', 'local_panorama'),
+		'',
+		PARAM_TEXT
+	));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/visualizerversion',
-    new lang_string('visualizerversion', 'local_panorama'),
-    new lang_string('visualizerversiondesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
+	$environment_setting = new admin_setting_configselect(
+		'panorama/environment',
+		new lang_string('environment', 'local_panorama'),
+		new lang_string('environmentdesc', 'local_panorama'),
+		'Production US',
+		array('Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ')
+	);
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/visualizerintegrity',
-    new lang_string('visualizerintegrity', 'local_panorama'),
-    new lang_string('visualizerintegritydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
-
-    $environmentsetting = new admin_setting_configselect(
-    'panorama/environment',
-    new lang_string('environment', 'local_panorama'),
-    new lang_string('environmentdesc', 'local_panorama'),
-    'Production US',
-    ['Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ']
-    );
-
-    if (method_exists($environmentsetting, 'set_lockable')) {
-        $environmentsetting->set_lockable(true);
-    }
+	if (method_exists($environment_setting, 'set_lockable')) {
+		$environment_setting->set_lockable(true);
+	}
 
 
-    $settings->add($environmentsetting);
+	$settings->add($environment_setting);
 
-    $ADMIN->add('panorama', $settings);
+	$ADMIN->add('panorama', $settings);
 }

@@ -23,21 +23,21 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['consumerkey'] = 'LTI Consumer Key';
-$string['consumerkeydesc'] = '';
+$string['panorama'] = 'Panorama';
+$string['settings'] = 'Panorama for Moodle Settings';
 $string['environment'] = 'Panorama Environment';
 $string['environmentdesc'] = '';
 $string['key1'] = 'Primary Identify key';
 $string['key1desc'] = '';
 $string['key2'] = 'Secondary Identify Key';
 $string['key2desc'] = '';
+$string['consumerkey'] = 'LTI Consumer Key';
+$string['consumerkeydesc'] = '';
 $string['ltikey'] = 'LTI Key';
 $string['ltikeydesc'] = '';
-$string['panorama'] = 'Panorama';
-$string['pluginname'] = 'Panorama for Moodle - Configuration';
-$string['privacy:metadata'] = 'The Panorama For Moodle plugin does not collect or store any personal user data.';
-$string['settings'] = 'Panorama for Moodle Settings';
-$string['visualizerintegrity'] = 'Integrity Hash of Selected Version';
-$string['visualizerintegritydesc'] = '';
 $string['visualizerversion'] = 'Visualizer Version (Optional)';
 $string['visualizerversiondesc'] = '';
+$string['visualizerintegrity'] = 'Integrity Hash of Selected Version';
+$string['visualizerintegritydesc'] = '';
+$string['pluginname'] = 'Panorama for Moodle - Configuration';
+$string['privacy:metadata'] = 'The Panorama For Moodle plugin does not collect or store any personal user data.';
