@@ -63,23 +63,7 @@ if ($hassiteconfig) {
     PARAM_TEXT
     ));
 
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/visualizerversion',
-    new lang_string('visualizerversion', 'local_panorama'),
-    new lang_string('visualizerversiondesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
-
-    $settings->add(new admin_setting_configpasswordunmask(
-    'panorama/visualizerintegrity',
-    new lang_string('visualizerintegrity', 'local_panorama'),
-    new lang_string('visualizerintegritydesc', 'local_panorama'),
-    '',
-    PARAM_TEXT
-    ));
-
-    $environmentsetting = new admin_setting_configselect(
+    $environment_setting = new admin_setting_configselect(
     'panorama/environment',
     new lang_string('environment', 'local_panorama'),
     new lang_string('environmentdesc', 'local_panorama'),
@@ -87,12 +71,12 @@ if ($hassiteconfig) {
     ['Staging' => 'Staging', 'Production US' => 'Production US', 'Production CA' => 'Production CA', 'Production EU' => 'Production EU', 'Production AZ' => 'Production AZ']
     );
 
-    if (method_exists($environmentsetting, 'set_lockable')) {
-        $environmentsetting->set_lockable(true);
+    if (method_exists($environment_setting, 'set_lockable')) {
+        $environment_setting->set_lockable(true);
     }
 
 
-    $settings->add($environmentsetting);
+    $settings->add($environment_setting);
 
     $ADMIN->add('panorama', $settings);
 }
